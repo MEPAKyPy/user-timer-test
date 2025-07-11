@@ -1,0 +1,215 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    --primary: 320 65% 52%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 250 24% 90%;
+    --secondary-foreground: 260 16% 24%;
+
+    --muted: 250 24% 95%;
+    --muted-foreground: 260 8% 46%;
+
+    --accent: 310 72% 88%;
+    --accent-foreground: 260 16% 24%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 262.1 83.3% 57.8%;
+
+    --radius: 0.5rem;
+
+    /* Timer specific colors - birmarket style */
+    --timer-active: 142 70% 49%;
+    --timer-active-foreground: 0 0% 100%;
+    --timer-pause: 45 86% 62%;
+    --timer-pause-foreground: 0 0% 100%;
+    --timer-break: 320 65% 52%;
+    --timer-break-foreground: 0 0% 100%;
+    --timer-danger: 0 84% 60%;
+    --timer-danger-foreground: 0 0% 100%;
+
+    /* Birmarket gradient colors */
+    --birmarket-purple: 260 75% 35%;
+    --birmarket-pink: 320 65% 52%;
+    --birmarket-gradient: linear-gradient(
+      135deg,
+      hsl(260 75% 35%) 0%,
+      hsl(320 65% 52%) 100%
+    );
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 215 28% 8%;
+    --foreground: 210 20% 92%;
+
+    --card: 215 28% 10%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 215 28% 10%;
+    --popover-foreground: 210 20% 92%;
+
+    --primary: 320 65% 52%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 260 20% 20%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 260 20% 15%;
+    --muted-foreground: 260 10% 65%;
+
+    --accent: 320 50% 25%;
+    --accent-foreground: 0 0% 90%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 210 20% 92%;
+
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 263.4 70% 50.4%;
+
+    /* Timer specific colors - dark mode birmarket style */
+    --timer-active: 142 60% 55%;
+    --timer-active-foreground: 0 0% 100%;
+    --timer-pause: 45 86% 62%;
+    --timer-pause-foreground: 0 0% 100%;
+    --timer-break: 320 65% 60%;
+    --timer-break-foreground: 0 0% 100%;
+    --timer-danger: 0 72% 56%;
+    --timer-danger-foreground: 0 0% 100%;
+
+    /* Dark mode birmarket gradients */
+    --birmarket-purple: 260 60% 45%;
+    --birmarket-pink: 320 55% 62%;
+    --birmarket-gradient: linear-gradient(
+      135deg,
+      hsl(260 60% 45%) 0%,
+      hsl(320 55% 62%) 100%
+    );
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .timer-card {
+    @apply transform transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl;
+  }
+
+  .break-type-button {
+    @apply transform transition-all duration-200 hover:scale-105 active:scale-95;
+  }
+
+  .pulse-ring {
+    @apply animate-ping absolute inline-flex h-full w-full rounded-full opacity-75;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-bounce-gentle {
+    animation: bounceGentle 2s infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceGentle {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-4px);
+  }
+  60% {
+    transform: translateY(-2px);
+  }
+}
